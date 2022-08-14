@@ -1,0 +1,30 @@
+# docker-compose for Go Language
+#
+# This script is used to start the docker-compose for the Go Language.
+#
+# @author: Takahashi Akari <akaritakahashioss@gmail.com
+# @date: 2022-08-14
+# @version: 0.0.1
+version: "3"
+services:
+  golang:
+    ports:
+      - "8080:8080"
+    image: golang:1.19
+    volumes:
+      - ./golang:/go/src
+    depends_on:
+      - mysql
+    tty: true
+    
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "golang"
+      MYSQL_USER: "golang"
+      MYSQL_PASSWORD: "golang"
+    ports:
+      - "3306:3306"
+    tty: true
+
