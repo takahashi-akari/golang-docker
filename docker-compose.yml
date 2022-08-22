@@ -19,6 +19,7 @@ services:
     
   mysql:
     image: mysql:5.7
+    platform: linux/x86_64 # for M1 Mac
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "golang"
